@@ -1,1002 +1,949 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HWV-Group — подбор персонала</title>
-
-<meta name="description" content="HWV-Group — подбор персонала в Минске и по Беларуси. Поиск и предварительный отбор сотрудников для бизнеса.">
-
-<style>
-:root{
-    --dark:#0b1220;
-    --dark2:#111b2e;
-    --blue:#3478ff;
-    --blue2:#5b93ff;
-    --text:#101828;
-    --muted:#667085;
-    --light:#f5f7fb;
-    --white:#ffffff;
-    --border:#e6eaf0;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-    color:var(--text);
-    background:#fff;
-    line-height:1.55;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.container{
-    width:min(1120px,92%);
-    margin:auto;
-}
-
-/* HEADER */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.nav{
-    height:72px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:-.5px;
-}
-
-.logo span{
-    color:var(--blue);
-}
-
-.nav-links{
-    display:flex;
-    gap:28px;
-    font-size:14px;
-    color:#475467;
-}
-
-.nav-links a:hover{
-    color:var(--blue);
-}
-
-.nav-button{
-    background:var(--dark);
-    color:white;
-    padding:11px 18px;
-    border-radius:12px;
-    font-size:14px;
-    font-weight:700;
-}
-
-/* HERO */
-
-.hero{
-    background:
-        radial-gradient(circle at 85% 20%,rgba(52,120,255,.22),transparent 30%),
-        linear-gradient(135deg,#f4f7ff,#ffffff 65%);
-    padding:95px 0 90px;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:60px;
-    align-items:center;
-}
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:#eaf1ff;
-    color:var(--blue);
-    padding:8px 13px;
-    border-radius:50px;
-    font-size:13px;
-    font-weight:800;
-}
-
-.badge:before{
-    content:"";
-    width:7px;
-    height:7px;
-    background:#3478ff;
-    border-radius:50%;
-}
-
-h1{
-    font-size:clamp(46px,7vw,76px);
-    line-height:.98;
-    letter-spacing:-4px;
-    margin:20px 0;
-}
-
-.hero-text{
-    font-size:20px;
-    color:var(--muted);
-    max-width:650px;
-}
-
-.buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:30px;
-}
-
-.button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:15px 21px;
-    border-radius:13px;
-    font-weight:800;
-    transition:.2s;
-}
-
-.primary{
-    background:var(--blue);
-    color:#fff;
-    box-shadow:0 10px 25px rgba(52,120,255,.25);
-}
-
-.primary:hover{
-    transform:translateY(-2px);
-    background:#2468ec;
-}
-
-.secondary{
-    background:#fff;
-    border:1px solid var(--border);
-}
-
-.secondary:hover{
-    border-color:#b8c1cc;
-}
-
-/* HERO CARD */
-
-.hero-card{
-    background:linear-gradient(145deg,#101a2c,#182641);
-    color:white;
-    border-radius:28px;
-    padding:32px;
-    box-shadow:0 25px 70px rgba(11,18,32,.20);
-}
-
-.hero-card h3{
-    font-size:25px;
-    margin:0 0 20px;
-}
-
-.stat{
-    padding:19px 0;
-    border-top:1px solid rgba(255,255,255,.12);
-}
-
-.stat strong{
-    display:block;
-    font-size:19px;
-}
-
-.stat span{
-    display:block;
-    color:#aeb9ca;
-    font-size:14px;
-    margin-top:4px;
-}
-
-/* SECTIONS */
-
-section{
-    padding:85px 0;
-}
-
-.light{
-    background:var(--light);
-}
-
-.section-title{
-    max-width:720px;
-    margin-bottom:42px;
-}
-
-.section-title h2{
-    font-size:44px;
-    line-height:1.08;
-    letter-spacing:-1.7px;
-    margin:0 0 14px;
-}
-
-.section-title p{
-    color:var(--muted);
-    font-size:18px;
-    margin:0;
-}
-
-/* CARDS */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:28px;
-    transition:.2s;
-}
-
-.card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 40px rgba(16,24,40,.08);
-}
-
-.icon{
-    width:48px;
-    height:48px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#eaf1ff;
-    color:var(--blue);
-    border-radius:14px;
-    font-size:21px;
-    margin-bottom:22px;
-}
-
-.card h3{
-    margin:0 0 8px;
-    font-size:20px;
-}
-
-.card p{
-    margin:0;
-    color:var(--muted);
-}
-
-/* PROCESS */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.step{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:25px;
-}
-
-.step-number{
-    color:var(--blue);
-    font-size:13px;
-    font-weight:900;
-    margin-bottom:28px;
-}
-
-.step h3{
-    margin:0 0 8px;
-    font-size:18px;
-}
-
-.step p{
-    color:var(--muted);
-    margin:0;
-    font-size:15px;
-}
-
-/* JOBS */
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:11px;
-}
-
-.tag{
-    background:white;
-    border:1px solid var(--border);
-    padding:12px 17px;
-    border-radius:50px;
-    font-weight:600;
-}
-
-/* FORM */
-
-.form-section{
-    background:var(--dark);
-    color:white;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:60px;
-    align-items:start;
-}
-
-.form-info h2{
-    font-size:48px;
-    line-height:1.05;
-    letter-spacing:-2px;
-    margin:0 0 18px;
-}
-
-.form-info p{
-    color:#aeb9ca;
-    font-size:18px;
-}
-
-.form-info ul{
-    list-style:none;
-    padding:0;
-    margin:30px 0 0;
-}
-
-.form-info li{
-    margin:15px 0;
-    color:#d5dbe5;
-}
-
-.form-info li:before{
-    content:"✓";
-    color:#6ea0ff;
-    font-weight:900;
-    margin-right:10px;
-}
-
-.form{
-    background:white;
-    color:var(--text);
-    padding:32px;
-    border-radius:25px;
-}
-
-.form h3{
-    margin:0 0 22px;
-    font-size:25px;
-}
-
-.field{
-    margin-bottom:16px;
-}
-
-.field label{
-    display:block;
-    font-size:13px;
-    font-weight:700;
-    margin-bottom:7px;
-}
-
-.field input,
-.field textarea{
-    width:100%;
-    border:1px solid #dfe3e8;
-    border-radius:12px;
-    padding:14px;
-    font-family:inherit;
-    font-size:16px;
-    outline:none;
-}
-
-.field input:focus,
-.field textarea:focus{
-    border-color:var(--blue);
-    box-shadow:0 0 0 3px rgba(52,120,255,.1);
-}
-
-.field textarea{
-    min-height:130px;
-    resize:vertical;
-}
-
-.submit{
-    width:100%;
-    border:0;
-    cursor:pointer;
-    font-size:16px;
-}
-
-/* CONTACTS */
-
-.contacts{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-}
-
-.contact{
-    padding:25px;
-    border:1px solid var(--border);
-    border-radius:18px;
-}
-
-.contact small{
-    display:block;
-    color:var(--muted);
-    margin-bottom:6px;
-}
-
-.contact a{
-    font-size:17px;
-    font-weight:800;
-}
-
-/* FOOTER */
-
-footer{
-    background:#080e19;
-    color:#98a2b3;
-    padding:35px 0;
-    font-size:14px;
-}
-
-.footer-flex{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-}
-
-/* MOBILE */
-
-@media(max-width:850px){
-
-    .nav-links{
-        display:none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HWV-Group — подбор персонала в Беларуси</title>
+  <meta name="description" content="HWV-Group — подбор персонала для бизнеса. ИП «Кустрей». Найдём людей, которые нужны вашему бизнесу.">
+  <meta name="theme-color" content="#07111f">
+
+  <style>
+    :root {
+      --bg: #050b14;
+      --bg2: #081525;
+      --card: rgba(255,255,255,0.055);
+      --border: rgba(255,255,255,0.10);
+      --text: #f5f8ff;
+      --muted: #9aa9bd;
+      --blue: #2f8cff;
+      --blue2: #55b4ff;
+      --green: #35d39a;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
     }
 
-    .hero{
-        padding:65px 0;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .hero-grid,
-    .form-grid{
-        grid-template-columns:1fr;
+    html {
+      scroll-behavior: smooth;
     }
 
-    h1{
-        font-size:51px;
-        letter-spacing:-2.5px;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 85% 5%, rgba(47,140,255,.18), transparent 30%),
+        radial-gradient(circle at 10% 25%, rgba(53,211,154,.08), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    .hero-card{
-        margin-top:10px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .cards{
-        grid-template-columns:1fr;
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
     }
 
-    .steps{
-        grid-template-columns:1fr 1fr;
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5,11,20,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
-    .contacts{
-        grid-template-columns:1fr;
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    section{
-        padding:65px 0;
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
     }
 
-    .section-title h2{
-        font-size:36px;
+    .logo span {
+      color: var(--blue2);
     }
 
-    .form-info h2{
-        font-size:40px;
-    }
-}
-
-@media(max-width:520px){
-
-    .nav{
-        height:64px;
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
     }
 
-    .nav-button{
-        padding:9px 13px;
+    .nav-links a {
+      color: #c4cfdd;
+      font-size: 14px;
+      transition: .2s;
     }
 
-    .hero{
-        padding:55px 0;
+    .nav-links a:hover {
+      color: white;
     }
 
-    h1{
-        font-size:45px;
+    .nav-btn {
+      background: var(--blue);
+      padding: 11px 17px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 8px 25px rgba(47,140,255,.25);
     }
 
-    .hero-text{
-        font-size:18px;
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
     }
 
-    .buttons{
-        flex-direction:column;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
+      align-items: center;
+      padding: 90px 0;
     }
 
-    .button{
-        width:100%;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border: 1px solid rgba(85,180,255,.25);
+      background: rgba(47,140,255,.08);
+      color: #9bd4ff;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 25px;
     }
 
-    .steps{
-        grid-template-columns:1fr;
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 14px var(--green);
     }
 
-    .form{
-        padding:23px;
+    h1 {
+      font-size: clamp(46px, 7vw, 78px);
+      line-height: .98;
+      letter-spacing: -3px;
+      margin-bottom: 28px;
     }
-}
-</style>
+
+    h1 span {
+      background: linear-gradient(100deg, #fff, #58b5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.65;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 52px;
+      padding: 0 23px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), #1967e8);
+      box-shadow: 0 12px 35px rgba(47,140,255,.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: #dce6f2;
+    }
+
+    /* HERO CARD */
+
+    .hero-card {
+      position: relative;
+      min-height: 430px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(47,140,255,.16), rgba(255,255,255,.025)),
+        rgba(255,255,255,.035);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(47,140,255,.25);
+      filter: blur(70px);
+      right: -100px;
+      top: -90px;
+    }
+
+    .card-label {
+      color: #8db8df;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .hero-card h2 {
+      position: relative;
+      font-size: 34px;
+      line-height: 1.1;
+      margin: 16px 0 28px;
+    }
+
+    .stat {
+      position: relative;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .stat-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: rgba(47,140,255,.12);
+      color: #67baff;
+      font-size: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .stat small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-head {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      color: #65baff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 13px;
+    }
+
+    h2.section-title {
+      font-size: clamp(32px, 5vw, 50px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(85,180,255,.3);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(47,140,255,.12);
+      color: #67baff;
+      font-size: 22px;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* PROCESS */
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 14px;
+    }
+
+    .step {
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+    }
+
+    .number {
+      color: #63baff;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 25px;
+    }
+
+    .step h3 {
+      margin-bottom: 9px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* VACANCIES */
+
+    .vacancy-box {
+      border-radius: 28px;
+      padding: 38px;
+      background:
+        linear-gradient(135deg, rgba(47,140,255,.13), rgba(255,255,255,.035));
+      border: 1px solid var(--border);
+    }
+
+    .vacancy-list {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .vacancy {
+      padding: 17px 19px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(0,0,0,.13);
+      color: #dce6f2;
+    }
+
+    .vacancy::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    /* FORM */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .contact-info {
+      padding: 32px;
+      border-radius: 25px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+    }
+
+    .contact-item {
+      padding: 17px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .contact-item:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .contact-item a {
+      color: #eaf3ff;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    form {
+      padding: 32px;
+      border-radius: 25px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.045);
+      box-shadow: var(--shadow);
+    }
+
+    .form-title {
+      font-size: 25px;
+      margin-bottom: 6px;
+    }
+
+    .form-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      color: #cbd7e6;
+      font-size: 13px;
+      font-weight: 700;
+      margin: 16px 0 7px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.2);
+      color: white;
+      border-radius: 13px;
+      padding: 14px 15px;
+      outline: none;
+      font: inherit;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(85,180,255,.65);
+      box-shadow: 0 0 0 3px rgba(47,140,255,.09);
+    }
+
+    textarea {
+      min-height: 125px;
+      resize: vertical;
+    }
+
+    .submit {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      margin-top: 20px;
+      color: white;
+      font: inherit;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid rgba(255,255,255,.07);
+      color: #7e8ca0;
+      font-size: 13px;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        padding: 70px 0;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .vacancy-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        min-height: 65px;
+      }
+
+      .nav-btn {
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: 47px;
+        letter-spacing: -2px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .vacancy-box,
+      form,
+      .contact-info {
+        padding: 23px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-<div class="container nav">
+  <div class="container nav">
+    <a href="#top" class="logo">HWV<span>-GROUP</span></a>
 
-<div class="logo">
-HWV<span>-GROUP</span>
-</div>
+    <nav class="nav-links">
+      <a href="#about">О компании</a>
+      <a href="#process">Как работаем</a>
+      <a href="#vacancies">Вакансии</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
 
-<nav class="nav-links">
-<a href="#about">О нас</a>
-<a href="#process">Как работаем</a>
-<a href="#jobs">Вакансии</a>
-<a href="#contacts">Контакты</a>
-</nav>
-
-<a class="nav-button" href="#application">
-Оставить заявку
-</a>
-
-</div>
+    <a href="#application" class="nav-btn">Оставить заявку</a>
+  </div>
 </header>
 
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container">
-
-<div class="hero-grid">
-
-<div>
-
-<span class="badge">
-Подбор персонала · Минск и Беларусь
-</span>
-
-<h1>
-Люди, которые нужны вашему бизнесу
-</h1>
-
-<p class="hero-text">
-HWV-Group помогает работодателям находить сотрудников,
-беря на себя поиск и предварительный отбор кандидатов.
-</p>
-
-<div class="buttons">
-
-<a class="button primary" href="#application">
-Оставить заявку →
-</a>
-
-<a class="button secondary" href="tel:+375336151857">
-Позвонить
-</a>
-
-</div>
-
-</div>
-
-
-<div class="hero-card">
-
-<h3>
-HWV-Group
-</h3>
-
-<div class="stat">
-<strong>Поиск кандидатов</strong>
-<span>Подбираем людей под требования конкретной вакансии</span>
-</div>
-
-<div class="stat">
-<strong>Предварительный отбор</strong>
-<span>Уточняем опыт, условия и заинтересованность кандидата</span>
-</div>
-
-<div class="stat">
-<strong>Для бизнеса</strong>
-<span>Помогаем экономить время работодателя</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-Почему работодатели обращаются к нам
-</h2>
-
-<p>
-Вы ставите задачу — мы занимаемся поиском и первичным отбором кандидатов.
-</p>
-
-</div>
-
-
-<div class="cards">
-
-<div class="card">
-
-<div class="icon">01</div>
-
-<h3>
-Экономия времени
-</h3>
-
-<p>
-Не нужно самостоятельно просматривать большое количество откликов.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">02</div>
-
-<h3>
-Предварительный отбор
-</h3>
-
-<p>
-Уточняем основные требования и заинтересованность кандидатов.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">03</div>
-
-<h3>
-Индивидуальный подход
-</h3>
-
-<p>
-Подбираем кандидатов с учётом особенностей вашей вакансии.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- PROCESS -->
-
-<section id="process" class="light">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-Как всё происходит
-</h2>
-
-<p>
-Четыре простых шага от заявки до кандидата.
-</p>
-
-</div>
-
-
-<div class="steps">
-
-<div class="step">
-<div class="step-number">01 / ЗАЯВКА</div>
-<h3>Рассказываете о вакансии</h3>
-<p>Должность, требования, график и условия работы.</p>
-</div>
-
-<div class="step">
-<div class="step-number">02 / ПОИСК</div>
-<h3>Мы ищем кандидатов</h3>
-<p>Работаем с подходящими кандидатами и откликами.</p>
-</div>
-
-<div class="step">
-<div class="step-number">03 / ОТБОР</div>
-<h3>Проводим первичный отбор</h3>
-<p>Уточняем основные параметры и заинтересованность.</p>
-</div>
-
-<div class="step">
-<div class="step-number">04 / РЕЗУЛЬТАТ</div>
-<h3>Передаём кандидата</h3>
-<p>Вы проводите финальное собеседование и принимаете решение.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- JOBS -->
-
-<section id="jobs">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-С какими вакансиями работаем
-</h2>
-
-<p>
-Подбираем кандидатов под разные направления бизнеса.
-</p>
-
-</div>
-
-
-<div class="tags">
-
-<span class="tag">Рабочие специальности</span>
-<span class="tag">Сфера услуг</span>
-<span class="tag">Продажи</span>
-<span class="tag">Водители</span>
-<span class="tag">Административный персонал</span>
-<span class="tag">Специалисты</span>
-<span class="tag">Другие вакансии</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- APPLICATION FORM -->
-
-<section id="application" class="form-section">
-
-<div class="container">
-
-<div class="form-grid">
-
-<div class="form-info">
-
-<h2>
-Расскажите,<br>
-кого вы ищете
-</h2>
-
-<p>
-Оставьте заявку прямо на сайте.
-Мы свяжемся с вами и обсудим вашу вакансию.
-</p>
-
-<ul>
-<li>Заполнение занимает около минуты</li>
-<li>Можно указать любую открытую вакансию</li>
-<li>Мы свяжемся по указанному номеру</li>
-</ul>
-
-</div>
-
-
-<div class="form">
-
-<h3>
-Оставить заявку
-</h3>
-
-<form
-action="https://formsubmit.co/hardworkvisa@gmail.com"
-method="POST"
->
-
-<input type="hidden" name="_subject" value="Новая заявка с сайта HWV-Group">
-
-<input type="hidden" name="_captcha" value="false">
-
-<input type="hidden" name="_template" value="table">
-
-<input type="hidden" name="_next" value="https://hwv-group.github.io/HWV/thanks.html">
-
-
-<div class="field">
-
-<label>Ваше имя</label>
-
-<input
-type="text"
-name="name"
-placeholder="Например, Алексей"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>Номер телефона</label>
-
-<input
-type="tel"
-name="phone"
-placeholder="+375 XX XXX-XX-XX"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>Вакансия или сообщение</label>
-
-<textarea
-name="message"
-placeholder="Напишите, какого сотрудника вы ищете..."
-required
-></textarea>
-
-</div>
-
-
-<button class="button primary submit" type="submit">
-Отправить заявку →
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONTACTS -->
-
-<section id="contacts">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-Связаться с HWV-Group
-</h2>
-
-<p>
-Выберите удобный способ связи.
-</p>
-
-</div>
-
-
-<div class="contacts">
-
-<div class="contact">
-
-<small>Телефон</small>
-
-<a href="tel:+375336151857">
-+375 33 615-18-57
-</a>
-
-</div>
-
-
-<div class="contact">
-
-<small>E-mail</small>
-
-<a href="mailto:hardworkvisa@gmail.com">
-hardworkvisa@gmail.com
-</a>
-
-</div>
-
-
-<div class="contact">
-
-<small>Instagram</small>
-
-<a
-href="https://www.instagram.com/Hard_work_visa/"
-target="_blank"
-rel="noopener"
->
-@Hard_work_visa
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Подбор персонала для бизнеса
+        </div>
+
+        <h1>
+          Люди,<br>
+          <span>которые нужны</span><br>
+          вашему бизнесу
+        </h1>
+
+        <p class="hero-text">
+          HWV-Group помогает работодателям находить сотрудников под конкретные задачи.
+          Подбираем персонал, учитываем требования компании и сопровождаем процесс до выхода кандидата.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#application" class="btn btn-primary">
+            Найти сотрудника →
+          </a>
+
+          <a href="#about" class="btn btn-secondary">
+            Узнать больше
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-label">HWV-GROUP</div>
+
+        <h2>
+          Подбор людей.<br>
+          Фокус на результате.
+        </h2>
+
+        <div class="stat">
+          <div class="stat-icon">01</div>
+          <div>
+            <strong>Подбор персонала</strong>
+            <small>Под задачи вашего бизнеса</small>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">02</div>
+          <div>
+            <strong>Работа с работодателем</strong>
+            <small>Уточняем требования и формат работы</small>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">03</div>
+          <div>
+            <strong>Сопровождение</strong>
+            <small>Связь на ключевых этапах подбора</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="eyebrow">Почему HWV-Group</div>
+        <h2 class="section-title">Закрываем кадровые задачи бизнеса</h2>
+        <p class="section-description">
+          Работаем с работодателями и помогаем организовать поиск сотрудников
+          без лишней сложности.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">◈</div>
+          <h3>Точечный подбор</h3>
+          <p>
+            Разбираемся в требованиях к вакансии и ориентируем поиск
+            на подходящих кандидатов.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">↗</div>
+          <h3>Экономия времени</h3>
+          <p>
+            Берём на себя первичный поиск и коммуникацию с кандидатами,
+            чтобы вы могли сосредоточиться на бизнесе.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✓</div>
+          <h3>Понятный процесс</h3>
+          <p>
+            На каждом этапе вы понимаете, что происходит с вашей заявкой
+            и подбором сотрудника.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="eyebrow">Как работаем</div>
+        <h2 class="section-title">От заявки до кандидата</h2>
+      </div>
+
+      <div class="process">
+
+        <div class="step">
+          <div class="number">01 / ЗАЯВКА</div>
+          <h3>Рассказываете о вакансии</h3>
+          <p>
+            Оставляете заявку и указываете основные требования.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="number">02 / АНАЛИЗ</div>
+          <h3>Уточняем детали</h3>
+          <p>
+            Обсуждаем обязанности, условия и профиль нужного сотрудника.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="number">03 / ПОИСК</div>
+          <h3>Ищем кандидатов</h3>
+          <p>
+            Проводим поиск по заданным требованиям.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="number">04 / РЕЗУЛЬТАТ</div>
+          <h3>Передаём кандидатов</h3>
+          <p>
+            Вы получаете информацию о подходящих соискателях.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VACANCIES -->
+  <section id="vacancies">
+    <div class="container">
+
+      <div class="vacancy-box">
+
+        <div class="eyebrow">Направления</div>
+
+        <h2 class="section-title">
+          Персонал под разные задачи
+        </h2>
+
+        <p class="section-description">
+          Оставьте заявку — обсудим вашу вакансию и требования к кандидату.
+        </p>
+
+        <div class="vacancy-list">
+          <div class="vacancy">Рабочий персонал</div>
+          <div class="vacancy">Производство</div>
+          <div class="vacancy">Строительство</div>
+          <div class="vacancy">Сфера услуг</div>
+          <div class="vacancy">Логистика</div>
+          <div class="vacancy">Другие направления</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION -->
+  <section id="application">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="eyebrow">Оставить заявку</div>
+        <h2 class="section-title">Расскажите, кто вам нужен</h2>
+        <p class="section-description">
+          Заполните форму — мы свяжемся с вами для уточнения деталей.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-info" id="contacts">
+
+          <div class="contact-item">
+            <span>Телефон</span>
+            <a href="tel:+375336151857">
+              +375 33 615-18-57
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <span>Email</span>
+            <a href="mailto:hardworkvisa@gmail.com">
+              hardworkvisa@gmail.com
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <span>Instagram</span>
+            <a href="https://www.instagram.com/Hard_work_visa/" target="_blank">
+              @Hard_work_visa
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <span>Юридическая информация</span>
+            <strong>ИП «Кустрей»</strong>
+          </div>
+
+          <div class="contact-item">
+            <span>УНП</span>
+            <strong>791315146</strong>
+          </div>
+
+        </div>
+
+        <form
+          action="https://formsubmit.co/hardworkvisa@gmail.com"
+          method="POST"
+        >
+
+          <div class="form-title">Заявка на подбор персонала</div>
+
+          <div class="form-subtitle">
+            Ответим после получения вашей заявки.
+          </div>
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="Новая заявка с сайта HWV-Group"
+          >
+
+          <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          >
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          >
+
+          <input
+            type="hidden"
+            name="_next"
+            value="https://hwv-group.github.io/HWV/thanks.html"
+          >
+
+          <label for="name">Ваше имя</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Введите имя"
+            required
+          >
+
+          <label for="phone">Телефон</label>
+          <input
+            id="phone"
+            type="tel"
+            name="phone"
+            placeholder="+375..."
+            required
+          >
+
+          <label for="message">Вакансия / сообщение</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Например: нужен водитель категории C, 2 человека..."
+            required
+          ></textarea>
+
+          <button type="submit" class="btn btn-primary submit">
+            Отправить заявку →
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-
-<div class="container footer-flex">
-
-<div>
-<strong>HWV-GROUP</strong>
-</div>
-
-<div>
-© 2026 УНП 791315146 ИП «Кустрей»
-</div>
-
-</div>
-
+  <div class="container footer-flex">
+    <div>© 2026 HWV-Group · ИП «Кустрей»</div>
+    <div>УНП 791315146</div>
+  </div>
 </footer>
 
 </body>
